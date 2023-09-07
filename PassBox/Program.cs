@@ -4,12 +4,29 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
-
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 // Veritabaný baðlantýsý ve hizmet kayýtlarý
 var connectionString = builder.Configuration.GetConnectionString("LocalDB");
 builder.Services.AddBusinesServices(connectionString);
 
+builder.Services.AddSession();
+
+// ConfigureServices metodu
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = new PathString("/Auth/Login");
+    options.LogoutPath = new PathString("/Auth/Logout");
+    options.Cookie = new CookieBuilder
+    {
+        Name = "PassBox",
+        HttpOnly = true,
+        SameSite = SameSiteMode.Lax,
+        SecurePolicy = CookieSecurePolicy.Always
+    };
+    options.ExpireTimeSpan = TimeSpan.FromDays(7);
+    options.SlidingExpiration = true; 
+});
 
 var app = builder.Build();
 
@@ -26,6 +43,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication(); 
 app.UseAuthorization();
 
 app.MapControllerRoute(

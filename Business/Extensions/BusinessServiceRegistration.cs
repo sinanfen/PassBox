@@ -1,10 +1,12 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using Business.Utilities.Messages;
+using Business.ValidationRules;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Entities.Concrete;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +34,7 @@ public static class BusinessServiceRegistration
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IBoxService, BoxManager>();
-
+        //services.AddScoped<IValidator<User>, UserValidator>();
         // BoxMessages hizmet kaydı
         services.AddScoped<BoxMessages>();
 
@@ -41,5 +43,5 @@ public static class BusinessServiceRegistration
 
         return services;
     }
-   
+
 }

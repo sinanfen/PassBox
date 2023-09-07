@@ -1,0 +1,57 @@
+﻿@model UserWithRolesViewModel
+<!-- Left Sidenav -->
+<!-- Top Bar Start -->
+<div class="topbar">
+    <!-- LOGO -->
+    <div class="topbar-left">
+        <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="logo">
+            <span>
+                <img src="~/crovexhtml/assets/images/voyager-logo.png" alt="logo-small" class="logo-sm">
+            </span>
+            <span>
+                <img src="~/crovexhtml/assets/images/logo.png" alt="logo-large" class="logo-lg logo-light">
+                <img src="~/crovexhtml/assets/images/header-voyager-dark.png" alt="logo-large" class="logo-lg">
+            </span>
+        </a>
+    </div>
+    <!--end logo-->
+    <!-- Navbar -->
+    <nav class="navbar-custom">
+        <ul class="list-unstyled topbar-nav float-right mb-0">
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="false" aria-expanded="false">
+                    <img src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000" class="rounded-circle" />
+                    <span class="ml-1 nav-user-name hidden-sm">@Model.User.UserName <i class="mdi mdi-chevron-down"></i> </span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-divider mb-0"></div>
+                    <a class="dropdown-item" asp-area="Admin" asp-controller="Auth" asp-action="Logout"><i class="ti-power-off text-muted mr-2"></i> Logout</a>
+                </div>
+            </li>
+        </ul><!--end topbar-nav-->
+
+        <ul class="list-unstyled topbar-nav mb-0">
+            <li>
+                <button class="nav-link button-menu-mobile waves-effect waves-light">
+                    <i class="ti-menu nav-icon"></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
+    <!-- end navbar-->
+</div>
+<!-- Top Bar End -->
+<!-- Left Sidenav -->
+<div class="left-sidenav">
+    <ul class="metismenu left-sidenav-menu">
+        <li>
+            <a href="javascript: void(0);">
+                <i class="mdi mdi-home"></i><span>Home</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+            </a>
+            <ul class="nav-second-level" aria-expanded="false">
+                <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Home" asp-action="Index"><i class="ti-control-record"></i>Dashboard</a></li>
+            </ul>
+        </li>        
+    </ul>
+</div>

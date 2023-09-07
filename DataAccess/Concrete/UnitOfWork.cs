@@ -13,14 +13,14 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly PassBoxDbContext _context;
 
-    private EfBoxRepository _boxRepository;
+    private EfBoxDal _efBoxDal;
 
     public UnitOfWork(PassBoxDbContext context)
     {
         _context = context;
     }
 
-    public IBoxRepository Boxes => _boxRepository ??= new EfBoxRepository(_context);
+    public IBoxDal Boxes => _efBoxDal ??= new EfBoxDal(_context);
 
     public async ValueTask DisposeAsync()
     {

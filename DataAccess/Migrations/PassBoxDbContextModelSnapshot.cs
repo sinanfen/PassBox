@@ -30,11 +30,19 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
@@ -75,7 +83,9 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 9, 7, 18, 0, 48, 11, DateTimeKind.Local).AddTicks(8413),
+                            CreatedBy = "Admin",
+                            CreatedDate = new DateTime(2023, 9, 7, 21, 39, 33, 549, DateTimeKind.Local).AddTicks(455),
+                            ModifiedBy = "",
                             Password = "googlePassword",
                             SiteName = "Google",
                             Status = 1,
@@ -86,7 +96,9 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 9, 7, 18, 0, 48, 11, DateTimeKind.Local).AddTicks(8417),
+                            CreatedBy = "Admin",
+                            CreatedDate = new DateTime(2023, 9, 7, 21, 39, 33, 549, DateTimeKind.Local).AddTicks(460),
+                            ModifiedBy = "",
                             Password = "twitterPassword",
                             SiteName = "Twitter",
                             Status = 1,
@@ -97,7 +109,9 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 9, 7, 18, 0, 48, 11, DateTimeKind.Local).AddTicks(8419),
+                            CreatedBy = "Admin",
+                            CreatedDate = new DateTime(2023, 9, 7, 21, 39, 33, 549, DateTimeKind.Local).AddTicks(462),
+                            ModifiedBy = "",
                             Password = "githubPassword",
                             SiteName = "Github",
                             Status = 1,
@@ -140,7 +154,7 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "4da13928-6547-4245-ae8b-5ca2c8652f45",
+                            ConcurrencyStamp = "9e0a43e9-8fa3-4daa-9567-e17b975cf25c",
                             Name = "Work.Create",
                             NormalizedName = "WORK.CREATE"
                         });
@@ -252,7 +266,7 @@ namespace DataAccess.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f394b371-e1a0-4da8-99d6-3008b9ab8d4d",
+                            ConcurrencyStamp = "aee382ad-23a4-4bc7-b885-bb0acd118aa9",
                             Email = "sinanfen@hotmail.com",
                             EmailConfirmed = true,
                             FirstName = "Sinan",
@@ -260,9 +274,9 @@ namespace DataAccess.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SINANFEN@HOTMAIL.COM",
                             NormalizedUserName = "SINANFEN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFsbXhae/h+kYCbQrgx7kYvJkJZxdHuYI0BQ+EEhC9gNuGTEhpPWqYaoNKEQbainKA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEH3RJ3jUlYQz4YGl4DgDV/zUr3zsnzX/jj3oGawxNfCgnZpRTheLEzxSw0Sln+IlOg==",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "a8025e90-22ab-44cd-b2a0-4e1204292c13",
+                            SecurityStamp = "796395d2-71d5-485c-bdbb-7886528746c6",
                             TwoFactorEnabled = false,
                             UserName = "sinanfen"
                         });

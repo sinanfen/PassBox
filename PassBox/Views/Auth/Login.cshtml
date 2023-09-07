@@ -1,0 +1,112 @@
+﻿@using PassBox.Dtos.UserDtos;
+@model UserLoginViewModel
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title> PassBox - Admin </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/crovexhtml/assets/images/favicon.ico">
+
+    <!-- App css -->
+    <link href="~/crovexhtml/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/crovexhtml/assets/css/jquery-ui.min.css" rel="stylesheet">
+    <link href="~/crovexhtml/assets/css/icons.min.css" rel="stylesheet" />
+    <link href="~/crovexhtml/assets/css/app.min.css" rel="stylesheet" />
+
+</head>
+
+<body class="account-body accountbg">
+    <!-- Log In page -->
+    <div class="container">
+        <div class="row vh-100 ">
+            <div class="col-12 align-self-center">
+                <div class="auth-page">
+                    <div class="card auth-card shadow-lg">
+                        <div class="card-body">
+                            <div class="px-3">
+                                <div class="auth-logo-box">
+                                    <a asp-controller="Home" asp-action="Index" class="logo logo-admin"><img src="https://e7.pngegg.com/pngimages/166/90/png-clipart-computer-icons-user-setting-icon-miscellaneous-monochrome.png" height="55" alt="logo" class="auth-logo"></a>
+                                </div><!--end auth-logo-box-->
+
+                                <div class="text-center auth-logo-text">
+                                    <h4 class="mt-0 mb-3 mt-5">Welcome to PassBox</h4>
+                                    <p class="text-muted mb-0">Sign in to continue</p>
+                                </div> <!--end auth-logo-text-->
+
+
+                                <form asp-controller="Auth" asp-action="Login" method="post" class="form-horizontal auth-form my-4">
+                                    <div class="form-group text-danger" asp-validation-summary="All"></div>
+                                    <div class="form-group">
+                                        <label asp-for="Email"></label>
+                                        <div class="input-group mb-3">
+                                            <span class="auth-form-icon">
+                                                <i class="dripicons-user"></i>
+                                            </span>
+                                            <input asp-for="Email" type="email" class="form-control" placeholder="Enter email">
+
+                                        </div>
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div><!--end form-group-->
+
+                                    <div class="form-group">
+                                        <label asp-for="Password"></label>
+                                        <div class="input-group mb-3">
+                                            <span class="auth-form-icon">
+                                                <i class="dripicons-lock"></i>
+                                            </span>
+                                            <input asp-for="Password" type="password" class="form-control" placeholder="Enter password">
+
+                                        </div>
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div><!--end form-group-->
+
+                                    <div class="form-group row mt-4">
+                                        <div class="col-sm-6">
+                                            <div class="custom-control custom-switch switch-success">
+                                                <input asp-for="RememberMe" type="checkbox" class="custom-control-input">
+                                                <label asp-for="RememberMe" class="custom-control-label text-muted">Remember me</label>
+                                            </div>
+                                        </div><!--end col-->
+                                        <div class="col-sm-6 text-right">
+                                            <a href="" class="text-muted font-13"><i class="dripicons-lock"></i> Forgot password?</a>
+                                        </div><!--end col-->
+                                    </div><!--end form-group-->
+
+                                    <div class="form-group mb-0 row">
+                                        <div class="col-12 mt-2">
+                                            <button class="btn btn-gradient-primary btn-round btn-block waves-effect waves-light" type="submit">Log In <i class="fas fa-sign-in-alt ml-1"></i></button>
+                                        </div><!--end col-->
+                                    </div> <!--end form-group-->
+                                </form><!--end form-->
+                            </div><!--end /div-->
+                        </div><!--end card-body-->
+                        <div class="m-3 text-center text-muted">
+                            <p class="">Don't have an account ? <a asp-action="Register" class="text-primary ml-2">Free Register</a></p>
+                        </div>
+                    </div><!--end card-->
+
+                </div><!--end auth-page-->
+            </div><!--end col-->
+        </div><!--end row-->
+    </div><!--end container-->
+    <!-- End Log In page -->
+    <!-- jQuery  -->
+    <script src="~/crovexhtml/assets/js/jquery.min.js"></script>
+    <script src="~/crovexhtml/assets/js/jquery-ui.min.js"></script>
+    <script src="~/crovexhtml/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/crovexhtml/assets/js/jquery.slimscroll.min.js"></script>
+
+
+
+</body>
+
+</html>

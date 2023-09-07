@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -7,7 +7,89 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\LICENSE.txt" />
+    <Content Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\main.css" />
+    <Content Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\main.min.css" />
+    <Content Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\package.json" />
+    <Content Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\.package-lock.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales-all.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales-all.min.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\af.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\ar-dz.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\ar-kw.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\ar-ly.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\ar-ma.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\ar-sa.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\ar-tn.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\ar.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\bg.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\bs.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\ca.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\cs.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\da.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\de.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\el.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\en-au.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\en-gb.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\en-nz.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\es-us.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\es.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\et.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\eu.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\fa.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\fi.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\fr-ca.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\fr-ch.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\fr.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\gl.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\he.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\hi.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\hr.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\hu.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\id.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\is.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\it.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\ja.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\ka.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\kk.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\ko.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\lb.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\lt.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\lv.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\mk.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\ms.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\nb.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\nl.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\nn.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\pl.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\pt-br.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\pt.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\ro.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\ru.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\sk.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\sl.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\sq.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\sr-cyrl.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\sr.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\sv.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\th.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\tr.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\uk.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\vi.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\zh-cn.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\locales\zh-tw.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\main.esm.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\main.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\main.min.js" />
+    <None Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
       <PrivateAssets>all</PrivateAssets>
@@ -16,7 +98,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Business\Business.csproj" />
+    <ProjectReference Include="..\Entities\Entities.csproj" />
+    <ProjectReference Include="..\Business\Business.csproj" />    
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\CrovexHTML\plugins\fullcalendar\packages\bootstrap\node_modules\%40fullcalendar\core\main.d.ts" />
   </ItemGroup>
 
 </Project>

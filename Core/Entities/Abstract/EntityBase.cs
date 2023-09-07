@@ -13,11 +13,14 @@ public abstract class EntityBase
     public virtual DateTime CreatedDate { get; set; } = DateTime.Now; //virtual cünkü -> override CreatedDate = new DateTime(12-2-2022); gibi
     public virtual DateTime? ModifiedDate { get; set; }
     public virtual DateTime? DeletedDate { get; set; }
-    public DataStatus Status { get; set; }   
+    public virtual string CreatedBy { get; set; }
+    public virtual string ModifiedBy { get; set; } = string.Empty;
+    public DataStatus Status { get; set; }
 
     public EntityBase()
     {
         CreatedDate = DateTime.Now;
-        Status = DataStatus.Created;        
+        Status = DataStatus.Created;
+        CreatedBy = "Admin";
     }
 }
