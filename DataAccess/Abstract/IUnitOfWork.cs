@@ -8,8 +8,7 @@ namespace DataAccess.Abstract;
 
 public interface IUnitOfWork : IAsyncDisposable
 {
-    //IBoxRepository Boxes { get; }
+    IBoxRepository Boxes { get; }
 
-    
     Task<int> SaveAsync();
 }

@@ -1,7 +1,15 @@
+using Business.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+
+// Veritabaný baðlantýsý ve hizmet kayýtlarý
+var connectionString = builder.Configuration.GetConnectionString("LocalDB");
+builder.Services.AddBusinesServices(connectionString);
+
 
 var app = builder.Build();
 
