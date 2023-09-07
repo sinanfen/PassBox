@@ -10,7 +10,7 @@ namespace Entities.Concrete;
 public class Box : EntityBase, IEntity
 {
     public string URL { get; set; }
-    public string Name { get; set; }
+    public string SiteName { get; set; }
     public string Username { get; set; }
     public string Password { get; set; }
     //Relationship with User - many-to-one

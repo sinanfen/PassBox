@@ -21,11 +21,6 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Abstract\" />
-    <Folder Include="Concrete\EntityFramework\Repositories\" />
-  </ItemGroup>
-
   <ItemGroup>    
     <ProjectReference Include="..\Entities\Entities.csproj" />
   </ItemGroup>

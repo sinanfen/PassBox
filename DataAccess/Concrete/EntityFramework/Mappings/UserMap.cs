@@ -23,7 +23,7 @@ public class UserMap : IEntityTypeConfiguration<User>
         b.HasIndex(u => u.NormalizedEmail).HasName("EmailIndex").IsUnique();
 
         // Maps to the AspNetUsers table
-        b.ToTable("AspNetUsers");
+        b.ToTable("Users");
 
         // A concurrency token for use with the optimistic concurrency checking
         b.Property(u => u.ConcurrencyStamp).IsConcurrencyToken();
