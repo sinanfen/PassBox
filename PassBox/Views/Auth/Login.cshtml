@@ -1,5 +1,5 @@
-﻿@using PassBox.Dtos.UserDtos;
-@model UserLoginViewModel
+﻿@using Entities.Dtos.UserDtos;
+@model UserLoginDto
 @{
     Layout = "";
 }
@@ -43,7 +43,7 @@
 
 
                                 <form asp-controller="Auth" asp-action="Login" method="post" class="form-horizontal auth-form my-4">
-                                    <div class="form-group text-danger" asp-validation-summary="All"></div>
+                                    <div class="form-group text-danger" asp-validation-summary="ModelOnly"></div>
                                     <div class="form-group">
                                         <label asp-for="Email"></label>
                                         <div class="input-group mb-3">

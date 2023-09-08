@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using Business.ValidationRules;
 using Entities.Concrete;
+using Entities.Dtos.UserDtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using PassBox.Dtos.UserDtos;
+
 
 namespace PassBox.Controllers;
 
@@ -13,13 +14,13 @@ public class AuthController : Controller
     private readonly UserManager<User> _userManager;
     private readonly SignInManager<User> _signInManager;
     private readonly IMapper _mapper;
-    private readonly UserValidator _userValidator;
+    private readonly UserValidator userValidator = new();
 
     public AuthController(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper)
     {
         _userManager = userManager;
         _signInManager = signInManager;
-        _mapper = mapper;     
+        _mapper = mapper;
     }
 
     [HttpGet]
@@ -30,7 +31,7 @@ public class AuthController : Controller
 
 
     [HttpPost]
-    public async Task<IActionResult> Login(UserLoginViewModel userLoginViewModel)
+    public async Task<IActionResult> Login(UserLoginDto userLoginViewModel)
     {
         if (ModelState.IsValid)
         {
@@ -69,12 +70,19 @@ public class AuthController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Register(UserRegisterViewModel userRegisterViewModel)
+    public IActionResult Register()
     {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Register(UserRegisterDto userRegisterViewModel)
+    {
+
         var checkUser = _mapper.Map<User>(userRegisterViewModel);
 
         // Validate the user model using the UserValidator
-        var validationResult = _userValidator.Validate(checkUser);
+        var validationResult = userValidator.Validate(checkUser);
 
         // Check the validation result
         if (!validationResult.IsValid)
@@ -89,27 +97,32 @@ public class AuthController : Controller
             return View();
         }
 
-        if (ModelState.IsValid)
+
+        var user = _mapper.Map<User>(userRegisterViewModel);
+
+        var result = await _userManager.CreateAsync(user, userRegisterViewModel.PasswordHash);
+
+        if (result.Succeeded)
         {
-            var user = _mapper.Map<User>(userRegisterViewModel);
-
-            var result = await _userManager.CreateAsync(user, userRegisterViewModel.Password);
-
-            if (result.Succeeded)
+            return RedirectToAction("Login", "Auth");
+        }
+        else
+        {
+            // Handle any registration errors and add them to ModelState if necessary
+            foreach (var error in result.Errors)
             {
-                return RedirectToAction("Login", "Auth");
+                ModelState.AddModelError("", error.Description);
             }
-            else
-            {
-                // Handle any registration errors and add them to ModelState if necessary
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
-            }
+            return View();
         }
 
-        // Return the view with model state errors
+
+    }
+
+    [Authorize]
+    [HttpGet]
+    public IActionResult AccessDenied()
+    {
         return View();
     }
 }

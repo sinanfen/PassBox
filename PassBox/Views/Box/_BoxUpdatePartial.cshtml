@@ -1,0 +1,79 @@
+﻿@using Entities.Dtos.BoxDtos;
+@model BoxUpdateDto
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title"><span class="fas fa-plus"></span> Update Vault</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cancel">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="modal-body">
+                                <h4 class="mt-0 header-title">Required fields</h4>
+                                <p class="text-muted mb-3">
+                                    Fill in the fields below to add the relevant object.
+                                </p>
+                                <form asp-controller="Box" asp-action="Update" id="form-box-update">
+                                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                                    <div asp-validation-summary="ModelOnly" class="text-danger" id="validation-summary" aria-hidden="true" style="display: none;"></div>
+                                    <input asp-for="Id" type="hidden" />
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label asp-for="URL"></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control" asp-for="URL" placeholder="URL" />
+                                            </div>
+                                            @Html.ValidationMessageFor(x => x.URL,null, new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label asp-for="SiteName"></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-university"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control" asp-for="SiteName" placeholder="Site Name" />
+                                            </div>
+                                            @Html.ValidationMessageFor(x => x.SiteName,null, new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label asp-for="Username"></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-university"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control" asp-for="Username" placeholder="Username or Email" />
+                                            </div>
+                                            @Html.ValidationMessageFor(x => x.Username,null, new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label asp-for="Password"></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-university"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control" asp-for="Password" placeholder="Password" />
+                                            </div>
+                                            @Html.ValidationMessageFor(x => x.Password,null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </form><!--end form-->
+                            </div>
+                        </div><!--end card-body-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-gradient-primary waves-effect btn-block" id="btnUpdate" role="button"><i class="fas fa-save"></i> Submit</button>
+                            <button type="button" class="btn btn-gradient-danger waves-effect btn-block mb-2" data-dismiss="modal" role="button"><i class="fas fa-times"></i> Cancel</button>
+                        </div>
+                    </div><!--end card-->
+                </div><!--end col-->
+            </div>
+        </div>
+    </div>
+</div>

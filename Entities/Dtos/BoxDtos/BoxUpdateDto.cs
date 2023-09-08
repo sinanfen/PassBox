@@ -1,4 +1,4 @@
-﻿namespace PassBox.Dtos.BoxDtos;
+﻿namespace Entities.Dtos.BoxDtos;
 
 public class BoxUpdateDto
 {
@@ -6,5 +6,5 @@ public class BoxUpdateDto
     public string URL { get; set; }
     public string SiteName { get; set; }
     public string Username { get; set; }
-    public string Password { get; set; }
+    public string Password { get; set; }   
 }

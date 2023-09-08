@@ -1,0 +1,111 @@
+﻿@using Entities.Dtos.BoxDtos;
+@model BoxListDto
+@{
+    Layout = "_Layout";
+}
+@section Styles{
+    <link href="~/crovexhtml/plugins/datatables/datatables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/crovexhtml/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/crovexhtml/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" />
+}
+<div class="container-fluid">
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <div class="float-right">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Crovex</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Vault</a></li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Vault</h4>
+            </div><!--end page-title-box-->
+        </div><!--end col-->
+    </div>
+    <!-- end page title end breadcrumb -->
+    <div class="row">
+        @foreach (var item in Model.Boxes)
+        {
+            <div class="col-lg-4">
+                <div class="card profile-card">
+                    <div class="card-body p-0">
+                        <div class="media p-3  align-items-center">
+                            <img src="https://pbs.twimg.com/profile_images/1511043794937991169/3B5fpOw8_400x400.png" alt="user" class="rounded-circle thumb-xl">
+                            <div class="media-body ml-3 align-self-center">
+                                <h5 class="pro-title">@item.SiteName</h5>
+                                <p class="mb-2 text-muted">@item.URL</p>
+                            </div>
+                            <div class="action-btn">
+                                <a href="" class=""><i class="fas fa-pen text-info mr-2"></i></a>
+                                <a href="" class=""><i class="fas fa-trash-alt text-danger"></i></a>
+                            </div>
+                        </div>
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div>
+
+            <!--end col-->
+        }
+    </div><!--end row-->
+    <div class="row">
+        <div id="modalPlaceHolder" aria-hidden="true"></div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="mt-0 header-title">Boxes Datatable</h4>
+                    <p class="text-muted mb-3">
+                        A table for boxes. Contains password box details.
+                    </p>
+                    <table id="datatable" class="table mb-0 table-centered table-striped dt-responsive " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
+                            <tr style="text-align:center;">
+                                <th>URL</th>
+                                <th>SiteName</th>
+                                <th>Username</th>
+                                <th>Created Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var box in Model.Boxes.OrderByDescending(x => x.CreatedDate))
+                            {
+                                <tr name="@box.Id" style="text-align:center;">
+                                    <td>@box.URL</td>
+                                    <td>@box.SiteName</td>
+                                    <td>@box.Username</td>
+                                    <td>@box.CreatedDate</td>
+                                    <td>@box.Status</td>
+                                    <td class="text-center" style="width:140px;">
+                                        <a href="#" data-id="@box.Id" class="mr-2 btn-detail"><i class="fas fa-book text-success waves-effect font-16"></i></a>
+                                        <a href="#" data-id="@box.Id" class="mr-2 btn-update"><i class="fas fa-edit text-warning waves-effect font-16"></i></a>
+                                        <a href="#" data-id="@box.Id" class="mr-2 btn-delete"><i class="fas fa-trash-alt text-danger waves-effect font-16"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div>
+    <div style="position: fixed; right: 25px; bottom: 25px;" class="text-white">
+        <button class="btn btn-primary" id="btnAdd" role="button">
+            <i class="bi bi-plus-circle"></i> Add New
+        </button>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/crovexhtml/plugins/datatables/jquery.datatables.min.js"></script>
+    <script src="~/crovexhtml/plugins/datatables/datatables.responsive.min.js"></script>
+    <script src="~/crovexhtml/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/crovexhtml/plugins/datatables/datatables.buttons.min.js"></script>
+    <script src="~/crovexhtml/plugins/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="~/crovexhtml/plugins/datatables/jszip.min.js"></script>
+    <script src="~/crovexhtml/plugins/datatables/vfs_fonts.js"></script>
+    <script src="~/crovexhtml/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="~/crovexhtml/plugins/datatables/buttons.colVis.min.js"></script>
+    <script src="~/crovexhtml/plugins/datatables/responsive.bootstrap4.min.js"></script>    
+    <script src="~/crovexhtml/js/boxindex.js"></script>
+}

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Entities.Concrete;
-using PassBox.Dtos.BoxDtos;
+using Entities.Dtos.BoxDtos;
 
 namespace PassBox.AutoMapper.Profiles;
 

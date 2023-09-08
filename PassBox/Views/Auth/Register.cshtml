@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Entities.Dtos.UserDtos;
+@model UserRegisterDto
+@{
     Layout = "";
 }
 
@@ -14,14 +16,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+    <link rel="shortcut icon" href="~/crovexhtml/assets/images/favicon.ico">
 
     <!-- App css -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/css/jquery-ui.min.css" rel="stylesheet">
-    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/crovexhtml/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/crovexhtml/assets/css/jquery-ui.min.css" rel="stylesheet">
+    <link href="~/crovexhtml/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/crovexhtml/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/crovexhtml/assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -36,7 +38,7 @@
                         <div class="card-body">
                             <div class="px-3">
                                 <div class="auth-logo-box">
-                                    <a href="../dashboard/analytics-index.html" class="logo logo-admin"><img src="../assets/images/logo-sm.png" height="55" alt="logo" class="auth-logo"></a>
+                                    <a href="~/crovexhtml/dashboard/analytics-index.html" class="logo logo-admin"><img src="https://cdn-icons-png.flaticon.com/512/270/270008.png" height="55" alt="logo" class="auth-logo"></a>
                                 </div><!--end auth-logo-box-->
 
                                 <div class="text-center auth-logo-text">
@@ -45,71 +47,66 @@
                                 </div> <!--end auth-logo-text-->
 
 
-                                <form class="form-horizontal auth-form my-4" action="index.html">
-
+                                <form class="form-horizontal auth-form my-4" asp-controller="Auth" asp-action="Register" method="post">
+                                    @* <div class="form-group text-danger" asp-validation-summary="ModelOnly"></div> *@
                                     <div class="form-group">
-                                        <label for="username">First Name</label>
+                                        <label asp-for="FirstName">First Name</label>
                                         <div class="input-group mb-3">
                                             <span class="auth-form-icon">
                                                 <i class="dripicons-user"></i>
                                             </span>
-                                            <input type="text" class="form-control" id="username" placeholder="Enter first name">
+                                            <input type="text" asp-for="FirstName" class="form-control" placeholder="Enter first name">
                                         </div>
+                                        @Html.ValidationMessageFor(x => x.FirstName,null, new { @class = "text-danger" })
                                     </div><!--end form-group-->
 
                                     <div class="form-group">
-                                        <label for="username">Last Name</label>
+                                        <label asp-for="LastName">Last Name</label>
                                         <div class="input-group mb-3">
                                             <span class="auth-form-icon">
                                                 <i class="dripicons-user"></i>
                                             </span>
-                                            <input type="text" class="form-control" id="username" placeholder="Enter last name">
+                                            <input type="text" asp-for="LastName" class="form-control" placeholder="Enter last name">
                                         </div>
+                                        @Html.ValidationMessageFor(x => x.LastName,null, new { @class = "text-danger" })
                                     </div><!--end form-group-->
 
                                     <div class="form-group">
-                                        <label for="username">Username</label>
+                                        <label asp-for="UserName">Username</label>
                                         <div class="input-group mb-3">
                                             <span class="auth-form-icon">
                                                 <i class="dripicons-user"></i>
                                             </span>
-                                            <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                            <input type="text" asp-for="UserName" class="form-control" placeholder="Enter username">
                                         </div>
+                                        @Html.ValidationMessageFor(x => x.UserName,null, new { @class = "text-danger" })
                                     </div><!--end form-group-->
 
                                     <div class="form-group">
-                                        <label for="useremail">Email</label>
+                                        <label asp-for="Email">Email</label>
                                         <div class="input-group mb-3">
                                             <span class="auth-form-icon">
                                                 <i class="dripicons-mail"></i>
                                             </span>
-                                            <input type="email" class="form-control" id="useremail" placeholder="Enter Email">
+                                            <input type="email" asp-for="Email" class="form-control" placeholder="Enter Email">
                                         </div>
+                                        @Html.ValidationMessageFor(x => x.Email,null, new { @class = "text-danger" })
                                     </div><!--end form-group-->
 
                                     <div class="form-group">
-                                        <label for="userpassword">Password</label>
+                                        <label asp-for="PasswordHash">Password</label>
                                         <div class="input-group mb-3">
                                             <span class="auth-form-icon">
                                                 <i class="dripicons-lock"></i>
                                             </span>
-                                            <input type="password" class="form-control" id="userpassword" placeholder="Enter password">
+                                            <input type="password" asp-for="PasswordHash" class="form-control" placeholder="Enter password">
                                         </div>
-                                    </div><!--end form-group-->
-
-                                    <div class="form-group">
-                                        <label for="conf_password">Confirm Password</label>
-                                        <div class="input-group mb-3">
-                                            <span class="auth-form-icon">
-                                                <i class="dripicons-lock-open"></i>
-                                            </span>
-                                            <input type="password" class="form-control" id="conf_password" placeholder="Enter Confirm Password">
-                                        </div>
+                                        @Html.ValidationMessageFor(x => x.PasswordHash,null, new { @class = "text-danger" })
                                     </div><!--end form-group-->
 
                                     <div class="form-group mb-0 row">
                                         <div class="col-12 mt-2">
-                                            <button class="btn btn-gradient-primary btn-round btn-block waves-effect waves-light" type="button">Register <i class="fas fa-sign-in-alt ml-1"></i></button>
+                                            <button class="btn btn-gradient-primary btn-round btn-block waves-effect waves-light" type="submit">Register <i class="fas fa-sign-in-alt ml-1"></i></button>
                                         </div><!--end col-->
                                     </div> <!--end form-group-->
                                 </form><!--end form-->

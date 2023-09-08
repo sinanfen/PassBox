@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Entities.Concrete;
-using PassBox.Dtos.UserDtos;
+using Entities.Dtos.UserDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +13,8 @@ public class UserProfile : Profile
 {
     public UserProfile()
     {
-        CreateMap<UserRegisterViewModel, User>().ReverseMap();
-        CreateMap<UserUpdateViewModel, User>().ReverseMap();
+        CreateMap<UserRegisterDto, User>().ReverseMap();
+        CreateMap<UserUpdateDto, User>().ReverseMap();
 
     }
 }

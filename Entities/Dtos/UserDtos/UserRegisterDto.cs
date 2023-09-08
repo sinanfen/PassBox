@@ -1,15 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PassBox.Dtos.UserDtos;
+namespace Entities.Dtos.UserDtos;
 
-public class UserRegisterViewModel
+public class UserRegisterDto
 {
     public string UserName { get; set; }
 
     [DataType(DataType.Password)]
-    public string Password { get; set; }
+    public string PasswordHash { get; set; }
 
-    public string Mail { get; set; }
+    public string Email { get; set; }
 
     public string FirstName { get; set; }
 

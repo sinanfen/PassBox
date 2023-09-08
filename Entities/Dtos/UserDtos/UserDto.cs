@@ -1,8 +1,8 @@
 ﻿using Entities.Concrete;
 
-namespace PassBox.Dtos.UserDtos;
+namespace Entities.Dtos.UserDtos;
 
-public class UserViewModel
+public class UserDto
 {
     public User User { get; set; }
 }

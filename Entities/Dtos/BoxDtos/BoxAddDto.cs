@@ -1,4 +1,4 @@
-﻿namespace PassBox.Dtos.BoxDtos;
+﻿namespace Entities.Dtos.BoxDtos;
 
 public class BoxAddDto
 {
