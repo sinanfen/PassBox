@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace PassBox.Controllers
 {
-  
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

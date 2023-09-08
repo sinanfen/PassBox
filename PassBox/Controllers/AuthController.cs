@@ -5,7 +5,7 @@ using Entities.Dtos.UserDtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace PassBox.Controllers;
 
@@ -111,8 +111,10 @@ public class AuthController : Controller
             // Handle any registration errors and add them to ModelState if necessary
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError("", error.Description);
+                ModelState.AddModelError(error.Code, error.Description);               
             }
+            ViewBag.RegistrationErrors = ModelState.Where(x => x.Value.Errors.Any())
+                                          .ToDictionary(x => x.Key, x => x.Value.Errors.Select(e => e.ErrorMessage).ToList());
             return View();
         }
 

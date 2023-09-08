@@ -92,7 +92,7 @@
                             dataTable.row(newTableRow).draw();
                             toastr.success(`${boxAddAjaxModel.BoxDto.Message}`, 'Success!');
                         } else {
-                            let summaryText = "";
+                            let summaryText = "Error!";
                             $('#validation-summary > ul > li').each(function () {
                                 let text = $(this).text();
                                 summaryText = `*${text}\n`;
@@ -186,7 +186,7 @@
                             dataTable.row(tableRow).invalidate();
                             toastr.success(`${boxUpdateAjaxModel.BoxDto.Message}`, "Success!");
                         } else {
-                            let summaryText = "";
+                            let summaryText = "Error!";
                             $('#validation-summary > ul > li').each(function () {
                                 let text = $(this).text();
                                 summaryText = `*${text}\n`;
@@ -210,7 +210,7 @@
         event.preventDefault(); //Butonun kendi bir işlevi varsa bunu deaktif et.
         const id = $(this).attr('data-id');
         const tableRow = $(`[name="${id}"]`);
-        const boxTitle = tableRow.find('td:eq(0)').text(); //<td> ler içerisinden 3. td yi seçmiş oldu. (bilgisayarlar sıfırdan sayar ve 1.index 2. numaraya denk gelir)
+        const boxTitle = tableRow.find('td:eq(1)').text(); //<td> ler içerisinden 3. td yi seçmiş oldu. (bilgisayarlar sıfırdan sayar ve 1.index 2. numaraya denk gelir)
         Swal.fire({
             title: 'Are you sure you want to delete?',
             text: `Box '${boxTitle}' will be deleted!`,

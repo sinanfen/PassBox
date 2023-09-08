@@ -12,8 +12,6 @@ public class EfEntityRepositoryBase<TEntity> : IEntityRepository<TEntity> where 
     public EfEntityRepositoryBase(DbContext context)
     {
         _context = context;
-        //_context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-        //AsNoTracking() işlemini constructor içinden de bu şekilde uygulayabiliriz.
     }
 
     public async Task<TEntity> AddAsync(TEntity entity)
@@ -73,13 +71,11 @@ public class EfEntityRepositoryBase<TEntity> : IEntityRepository<TEntity> where 
                 query = query.Include(includeProperty);
             }
         }
-        return await query.AsNoTracking().SingleOrDefaultAsync();
-        //SingleOrDefault -> Get metodu tek bir veri döneceğinden bunu kullandım. GetAll dan farkı budur
+        return await query.AsNoTracking().SingleOrDefaultAsync();     
     }
   
     public IQueryable<TEntity> GetAsQueryable()
-    {
-        //Example: UnitOfWork.Works.GetAsQueryable() --> Work nesnesini queryable olarak dönecektir.
+    {       
         return _context.Set<TEntity>().AsQueryable();
     }   
 }

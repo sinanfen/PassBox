@@ -44,7 +44,8 @@ public class BoxManager : BaseManager, IBoxService
         var oldBox = await UnitOfWork.Boxes.GetAsync(b => b.Id == boxUpdateDto.Id);
         var currentBox = Mapper.Map(boxUpdateDto, oldBox);
         currentBox.ModifiedBy = modifiedBy;
-
+        currentBox.Status = Core.Entities.Enums.DataStatus.Updated;
+        currentBox.ModifiedDate = DateTime.Now;
         var updatedBox = await UnitOfWork.Boxes.UpdateAsync(currentBox);
         await UnitOfWork.SaveAsync();
 

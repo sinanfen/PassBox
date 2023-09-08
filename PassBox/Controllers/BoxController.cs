@@ -15,6 +15,7 @@ using System.Text.Json;
 
 namespace PassBox.Controllers;
 
+[Authorize]
 public class BoxController : BaseController
 {
     private readonly IBoxService _boxService;
@@ -93,8 +94,8 @@ public class BoxController : BaseController
             return Json(boxAddAjaxErrorModel);
         }
 
-        string hashedPassword = HashPassword(checkForBox.Password);
-        boxAddDto.Password = hashedPassword;
+        //string hashedPassword = HashPassword(checkForBox.Password);
+        //boxAddDto.Password = hashedPassword;
 
         var result = await _boxService.AddAsync(boxAddDto, $"{LoggedInUser.FirstName} {LoggedInUser.LastName}", LoggedInUser.Id);
         if (result.ResultStatus == ResultStatus.Success)
@@ -125,7 +126,6 @@ public class BoxController : BaseController
             return Json(boxAddAjaxErrorModel);
         }
     }
-
 
     [HttpGet]
     public async Task<IActionResult> Update(int boxId)
@@ -167,8 +167,8 @@ public class BoxController : BaseController
             return Json(boxUpdateAjaxErrorModel);
         }
 
-        string hashedPassword = HashPassword(checkForBox.Password);
-        boxUpdateDto.Password = hashedPassword;
+        //string hashedPassword = HashPassword(checkForBox.Password);
+        //boxUpdateDto.Password = hashedPassword;
 
         var result = await _boxService.UpdateAsync(boxUpdateDto, $"{LoggedInUser.FirstName} {LoggedInUser.LastName}");
         if (result.ResultStatus == ResultStatus.Success)
@@ -201,6 +201,22 @@ public class BoxController : BaseController
         }
     }
 
+    [HttpPost]
+    public async Task<JsonResult> Delete(int boxId)
+    {
+        var result = await _boxService.DeleteAsync(boxId, $"{LoggedInUser.FirstName} {LoggedInUser.LastName}");
+        var deletedPost = JsonSerializer.Serialize(result.Data);
+        return Json(deletedPost);
+    }
+
+    [HttpPost]
+    public async Task<JsonResult> HardDelete(int boxId)
+    {
+        var result = await _boxService.HardDeleteAsync(boxId);
+        var deletedBox = JsonSerializer.Serialize(result);
+        return Json(deletedBox);
+    }
+
     public string HashPassword(string password)
     {
         using (var sha256 = SHA256.Create())
@@ -215,6 +231,26 @@ public class BoxController : BaseController
             }
 
             return builder.ToString();
+        }
+    }
+
+    public bool ValidatePassword(string inputPassword, string storedHashedPassword)
+    {
+        using (var sha256 = SHA256.Create())
+        {
+            byte[] inputHashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(inputPassword));
+
+            // Convert the input hashed byte array to a hexadecimal string
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < inputHashedBytes.Length; i++)
+            {
+                builder.Append(inputHashedBytes[i].ToString("x2"));
+            }
+
+            string inputHashedPassword = builder.ToString();
+
+            // Compare the stored hashed password with the input hashed password
+            return inputHashedPassword == storedHashedPassword;
         }
     }
 }

@@ -13,11 +13,4 @@ public interface IBoxService
     Task<IDataResult<BoxDto>> UpdateAsync(BoxUpdateDto boxUpdateDto, string modifiedBy);
     Task<IDataResult<BoxDto>> DeleteAsync(int boxId, string modifiedBy);
     Task<IResult> HardDeleteAsync(int boxId);
-
-    //Task<Box> GetById(int boxId);
-    //Task<IList<Box>> GetAllAsync();
-    //Task<Box> AddAsync();
-    //Task<Box> UpdateAsync();
-    //Task<Box> DeleteAsync();
-    //Task HardDeleteAsync();
 }
