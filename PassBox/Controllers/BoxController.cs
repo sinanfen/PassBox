@@ -54,6 +54,8 @@ public class BoxController : BaseController
         var result = await _boxService.GetAsync(boxId);
         if (result.ResultStatus == ResultStatus.Success)
         {
+            string saltPassword = DecodePassword(result.Data.Box.Password);
+            result.Data.Box.Password = saltPassword;
             return PartialView("_GetBoxDetailPartial", result.Data);
         }
         else
@@ -133,6 +135,8 @@ public class BoxController : BaseController
         var result = await _boxService.GetBoxUpdateDtoAsync(boxId);
         if (result.ResultStatus == ResultStatus.Success)
         {
+            string saltPassword = DecodePassword(result.Data.Password);
+            result.Data.Password = saltPassword;
             return PartialView("_BoxUpdatePartial", result.Data);
         }
         else
@@ -167,9 +171,15 @@ public class BoxController : BaseController
             return Json(boxUpdateAjaxErrorModel);
         }
 
-        //string hashedPassword = HashPassword(checkForBox.Password);
-        //boxUpdateDto.Password = hashedPassword;
 
+        //////////////////////////////////////////
+        //string saltPassword = boxUpdateDto.Password;
+        //byte[] bytesToEncode = Encoding.UTF8.GetBytes(saltPassword);
+        //string base64Password = Convert.ToBase64String(bytesToEncode);
+        //boxUpdateDto.Password = base64Password;
+
+        string hashedPassword = HashPassword(checkForBox.Password);
+        boxUpdateDto.Password = hashedPassword;
         var result = await _boxService.UpdateAsync(boxUpdateDto, $"{LoggedInUser.FirstName} {LoggedInUser.LastName}");
         if (result.ResultStatus == ResultStatus.Success)
         {
@@ -217,40 +227,63 @@ public class BoxController : BaseController
         return Json(deletedBox);
     }
 
+    //public string HashPassword(string password)
+    //{
+    //    using (var sha256 = SHA256.Create())
+    //    {
+    //        byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+    //        // Convert the byte array to a hexadecimal string
+    //        StringBuilder builder = new StringBuilder();
+    //        for (int i = 0; i < hashedBytes.Length; i++)
+    //        {
+    //            builder.Append(hashedBytes[i].ToString("x2"));
+    //        }
+
+    //        return builder.ToString();
+    //    }
+    //}
+
+    //public bool ValidatePassword(string inputPassword, string storedHashedPassword)
+    //{
+    //    using (var sha256 = SHA256.Create())
+    //    {
+    //        byte[] inputHashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(inputPassword));
+
+    //        // Convert the input hashed byte array to a hexadecimal string
+    //        StringBuilder builder = new StringBuilder();
+    //        for (int i = 0; i < inputHashedBytes.Length; i++)
+    //        {
+    //            builder.Append(inputHashedBytes[i].ToString("x2"));
+    //        }
+
+    //        string inputHashedPassword = builder.ToString();
+
+    //        // Compare the stored hashed password with the input hashed password
+    //        return inputHashedPassword == storedHashedPassword;
+    //    }
+    //}
     public string HashPassword(string password)
     {
-        using (var sha256 = SHA256.Create())
-        {
-            byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-
-            // Convert the byte array to a hexadecimal string
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < hashedBytes.Length; i++)
-            {
-                builder.Append(hashedBytes[i].ToString("x2"));
-            }
-
-            return builder.ToString();
-        }
+        byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+        string base64Password = Convert.ToBase64String(passwordBytes);
+        return base64Password;
     }
 
-    public bool ValidatePassword(string inputPassword, string storedHashedPassword)
+    public string DecodePassword(string base64Password)
     {
-        using (var sha256 = SHA256.Create())
+        try
         {
-            byte[] inputHashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(inputPassword));
-
-            // Convert the input hashed byte array to a hexadecimal string
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < inputHashedBytes.Length; i++)
-            {
-                builder.Append(inputHashedBytes[i].ToString("x2"));
-            }
-
-            string inputHashedPassword = builder.ToString();
-
-            // Compare the stored hashed password with the input hashed password
-            return inputHashedPassword == storedHashedPassword;
+            byte[] passwordBytes = Convert.FromBase64String(base64Password);
+            string password = Encoding.UTF8.GetString(passwordBytes);
+            return password;
+        }
+        catch (FormatException)
+        {
+            // Base64 ile şifre çözülmedi.
+            return null;
         }
     }
+
+
 }
