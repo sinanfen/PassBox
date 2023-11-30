@@ -13,12 +13,12 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly PassBoxDbContext _context;
 
-    private EfBoxDal _efBoxDal;
-
     public UnitOfWork(PassBoxDbContext context)
     {
         _context = context;
     }
+
+    private EfBoxDal _efBoxDal;
 
     public IBoxDal Boxes => _efBoxDal ??= new EfBoxDal(_context);
 
